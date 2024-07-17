@@ -1,0 +1,2 @@
+yt-dlp -x --audio-format mp3 --write-comments "<url>"
+#"https://www.youtube.com/watch?v=YlUKcNNmywk" "https://www.youtube.com/watch?v=QOOiY0bgrlU"
