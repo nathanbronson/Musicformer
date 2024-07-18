@@ -2,7 +2,7 @@
 
 _____
 # Musicformer
-***ENTIRELY SOMETHING***
+a neural network for entirely unsupervised embeddings
 
 ## About
 *Musicformer is a work-in-progress. The existing models are prone to collapse. Additional work is needed to stabilize the models. The vector space model is also not yet integrated with the music interface.*
