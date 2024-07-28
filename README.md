@@ -30,9 +30,7 @@ Because ${c \in C \longleftrightarrow (\mathcal{E}' \circ \mathcal{D}')(c) = c}$
 In a vector space, distance or a monotonic transformation of it will be a sufficient reconstruction loss, and we can formulate a discrimination loss ${\mathcal{C} = p(\mathcal{D}(c) \in S)}$, which can be approximated by minimizing ${BCE(\mathcal{C}'(0, S))}$ and ${BCE(1, \mathcal{C}'(1, \mathcal{D}'(c)))}$\
 We can, therefore, formulate the differentiable proxy ${\mathcal{L} = MSE(c, (\mathcal{E}' \circ \mathcal{D}')(c)) + \mathcal{C}(\mathcal{D}(c))}$
 
-To simplify calculations, we partition the vsae loss, such that the decoder is trained by the discrimination loss and the encoder by the reconstruction loss. The effect is a model resembling a low-dimensional GAN with an auxilliary network trained to predict the input noise from the output.
-
-This model was tested on MNIST data. It also exhibited collapse, causing the discriminator to outpace the decoder even when weakened and selectively trained.
+To simplify calculations, we partition the vsae loss, such that the decoder is trained by the discrimination loss and the encoder by the reconstruction loss. The effect is a model resembling a low-dimensional GAN with an auxilliary network trained to predict the input noise from the output. This model was tested on MNIST data.
 
 ## Usage
 The scripts to run the various experiments are available in each experiment's directory. These two models have not yet been integrated, so there is not yet a main script.
