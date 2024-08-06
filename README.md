@@ -5,7 +5,7 @@ _____
 a neural network for entirely unsupervised embeddings
 
 ## About
-*Musicformer is a work-in-progress. The existing models are prone to collapse. Additional work is needed to stabilize the models. The vector space model is also not yet integrated with the music interface.*
+*Musicformer is a work-in-progress. The existing models are prone to collapse; additional work is needed to stabilize the models. The vector space model is also not yet integrated with the music interface.*
 
 Musicformer is a neural network for embedding music data in a linear manifold for comparison and analysis. This repository contains two experiments from this project's development.
 
@@ -23,14 +23,12 @@ Regarding this resemblance, ${\exists}$ ${C \subseteq D, A \subseteq \mathbb{R}}
 ${f'}$, then, can be described as ${f' : V \xrightarrow{inj} D}$ (having a corollary map ${V \supseteq V' \xrightarrow{bij} C \subseteq D}$), and the optimal ${f'}$ maximizes ${|C|}$. \
 For a more optimal ${f'}$, then, ${D}$ will like a vector space over vector addition and scalar multiplication for more elements. \
 We can now define ${\mathcal{E} : S \rightarrow D}$ as ${f \circ v}$, creating an encoder function (with its approximation ${\mathcal{E}'}$ being ${f' \circ v}$) that embeds an arbitrary set ${S}$ into a vector space. \
-To create a decoder, we invert the encoder to get ${\mathcal{D} : D \rightarrow S}$ as ${v^{-1} \circ f^{-1}}$. \
+To create a decoder, we invert the encoder to get ${\mathcal{D} : D \rightarrow S}$ as ${v^{-1} \circ f^{-1}}$.
 
 > To create approximate ${\mathcal{E}}$ and ${\mathcal{D}}$ by gradient descent, we must find a differentiable proxy for ${|C|}$. \
 Because ${c \in C \longleftrightarrow (\mathcal{E}' \circ \mathcal{D}')(c) = c}$ ${\land}$ ${\exists}$ ${s \in S : \mathcal{E}'(s) \in C}$, our loss should be a combination of a reconstruction loss and a discrimination loss. \
 In a vector space, distance or a monotonic transformation of it will be a sufficient reconstruction loss, and we can formulate a discrimination loss ${\mathcal{C} = p(\mathcal{D}(c) \in S)}$, which can be approximated by minimizing ${BCE(\mathcal{C}'(0, S))}$ and ${BCE(1, \mathcal{C}'(1, \mathcal{D}'(c)))}$\
 We can, therefore, formulate the differentiable proxy ${\mathcal{L} = MSE(c, (\mathcal{E}' \circ \mathcal{D}')(c)) + \mathcal{C}(\mathcal{D}(c))}$
-
-To simplify calculations, we partition the vsae loss, such that the decoder is trained by the discrimination loss and the encoder by the reconstruction loss. The effect is a model resembling a low-dimensional GAN with an auxilliary network trained to predict the input noise from the output. This model was tested on MNIST data.
 
 ## Usage
 The scripts to run the various experiments are available in each experiment's directory. These two models have not yet been integrated, so there is not yet a main script.
